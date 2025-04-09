@@ -1,52 +1,24 @@
 body {
   margin: 0;
   background-color: #fff0f6;
-  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Trái tim chính */
-.heart {
-  width: 50vmin;
-  height: 50vmin;
-  background-color: red;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: spinY 2s linear forwards;
-  clip-path: path("M24.5,-0.4c5.6,0,10.2,4.6,10.2,10.2c0,5.6-5.6,10.6-10.2,15.2c-4.6-4.6-10.2-9.6-10.2-15.2C14.3,4.2,18.9,-0.4,24.5,-0.4z");
+.heart-3d {
+  width: 200px;
+  height: 200px;
+  background-image: url("https://png.pngtree.com/png-clipart/20240301/original/pngtree-realistic-pink-heart-3d-render-for-valentines-day-png-image_14461235.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  animation: pulse 2s ease-in-out infinite;
 }
 
-/* Trái tim nhỏ */
-.mini-heart {
-  width: 20px;
-  height: 18px;
-  background-color: pink;
-  position: absolute;
-  clip-path: path("M24.5,-0.4c5.6,0,10.2,4.6,10.2,10.2c0,5.6-5.6,10.6-10.2,15.2c-4.6-4.6-10.2-9.6-10.2-15.2C14.3,4.2,18.9,-0.4,24.5,-0.4z");
-  animation: float 4s ease-out forwards;
-  opacity: 0.8;
-  pointer-events: none;
-  z-index: 999;
-}
-
-/* Animation */
-@keyframes spinY {
-  0% {
-    transform: translate(-50%, -50%) rotateY(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotateY(360deg);
-  }
-}
-
-@keyframes float {
-  0% {
-    transform: translate(0, 0);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(var(--x), var(--y));
-    opacity: 0;
-  }
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
 }
