@@ -1,4 +1,3 @@
-// Hiệu ứng trái tim nhỏ ngẫu nhiên
 function createMiniHeart(x, y) {
   const mini = document.createElement("div");
   mini.className = "mini-heart";
@@ -11,17 +10,19 @@ function createMiniHeart(x, y) {
   setTimeout(() => mini.remove(), 3000);
 }
 
-// Sau khi trái tim lớn xoay xong, tạo hiệu ứng trái tim nhỏ
+// Khi trái tim lớn xoay xong thì biến mất và tạo các trái tim nhỏ
 setTimeout(() => {
   const heart = document.getElementById("main-heart");
-  heart.remove();
+  if (heart) {
+    heart.remove();
+  }
 
   for (let i = 0; i < 30; i++) {
     createMiniHeart(window.innerWidth / 2, window.innerHeight / 2);
   }
-}, 3000);
+}, 2000);
 
-// Thêm hiệu ứng click trái tim nhỏ
+// Click tạo tim nhỏ
 document.addEventListener("click", (e) => {
   for (let i = 0; i < 3; i++) {
     createMiniHeart(e.clientX, e.clientY);
