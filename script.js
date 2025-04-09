@@ -1,28 +1,26 @@
-// Tạo trái tim nhỏ ngẫu nhiên
-function createMiniHeart(x, y) {
-  const mini = document.createElement("div");
-  mini.className = "mini-heart";
-  mini.style.left = `${x}px`;
-  mini.style.top = `${y}px`;
-  mini.style.setProperty("--x", `${Math.random() * 200 - 100}px`);
-  mini.style.setProperty("--y", `${Math.random() * -200}px`);
-  document.body.appendChild(mini);
+function createParticles(x, y) {
+  const count = 30;
+  for (let i = 0; i < count; i++) {
+    const particle = document.createElement("div");
+    particle.classList.add("particle");
+    particle.style.left = `${x}px`;
+    particle.style.top = `${y}px`;
 
-  setTimeout(() => mini.remove(), 4000);
+    // Tạo hướng bay ngẫu nhiên
+    const angle = Math.random() * 2 * Math.PI;
+    const distance = Math.random() * 200 + 50;
+    const dx = Math.cos(angle) * distance;
+    const dy = Math.sin(angle) * distance;
+
+    particle.style.setProperty('--x', `${dx}px`);
+    particle.style.setProperty('--y', `${dy}px`);
+
+    document.body.appendChild(particle);
+
+    setTimeout(() => particle.remove(), 1000);
+  }
 }
 
-// Sau khi trái tim chính xoay xong
-setTimeout(() => {
-  const heart = document.getElementById("main-heart");
-  heart.remove();
-  for (let i = 0; i < 30; i++) {
-    createMiniHeart(window.innerWidth / 2, window.innerHeight / 2);
-  }
-}, 2000);
-
-// Click tạo thêm tim nhỏ
 document.addEventListener("click", (e) => {
-  for (let i = 0; i < 5; i++) {
-    createMiniHeart(e.clientX, e.clientY);
-  }
+  createParticles(e.clientX, e.clientY);
 });
