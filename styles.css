@@ -4,45 +4,49 @@ body {
   overflow: hidden;
 }
 
+/* Trái tim chính */
 .heart {
-  width: 100px;
-  height: 90px;
+  width: 50vmin;
+  height: 50vmin;
   background-color: red;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: spin 2s linear infinite;
-  clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 80%, 20% 100%, 0% 35%);
+  animation: spinY 2s linear forwards;
+  clip-path: path("M24.5,-0.4c5.6,0,10.2,4.6,10.2,10.2c0,5.6-5.6,10.6-10.2,15.2c-4.6-4.6-10.2-9.6-10.2-15.2C14.3,4.2,18.9,-0.4,24.5,-0.4z");
 }
 
-@keyframes spin {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
+/* Trái tim nhỏ */
 .mini-heart {
   width: 20px;
   height: 18px;
   background-color: pink;
   position: absolute;
-  clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 80%, 20% 100%, 0% 35%);
-  animation: float 5s linear forwards;
-  opacity: 0.8;
-}
-
-@keyframes float {
-  0% { transform: translate(0, 0); opacity: 1; }
-  100% { transform: translate(var(--x), var(--y)); opacity: 0; }
-}
-.mini-heart {
-  width: 20px;
-  height: 18px;
-  background-color: pink;
-  position: absolute;
-  clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 80%, 20% 100%, 0% 35%);
-  animation: float 3s ease-out forwards;
+  clip-path: path("M24.5,-0.4c5.6,0,10.2,4.6,10.2,10.2c0,5.6-5.6,10.6-10.2,15.2c-4.6-4.6-10.2-9.6-10.2-15.2C14.3,4.2,18.9,-0.4,24.5,-0.4z");
+  animation: float 4s ease-out forwards;
   opacity: 0.8;
   pointer-events: none;
   z-index: 999;
+}
+
+/* Animation */
+@keyframes spinY {
+  0% {
+    transform: translate(-50%, -50%) rotateY(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateY(360deg);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y));
+    opacity: 0;
+  }
 }
